@@ -1,0 +1,27 @@
+name: Generate Streak Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 每天跑一次
+  workflow_dispatch:        # 允许手动触发
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate streak SVG
+        uses: DenverCoder1/github-readme-streak-stats@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USER: yelubin377-jpg
+          THEME: tokyonight
+          HIDE_BORDER: true
+          OUTPUT_PATH: streak.svg
+
+      - name: Commit streak.svg
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add streak.svg
+          git diff --staged --quiet || git commit -m "Update streak stats"
+          git push
