@@ -1,4 +1,4 @@
-name: Generate Streak Stats
+name: Streak Stats
 
 on:
   schedule:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download streak SVG
+      - name: Download s
         run: |
           curl -s -o str
             "https://strelubin377-jpg&theme=tokyo
@@ -21,6 +21,6 @@ night&hide_border=true"
         run: |
           git config use
           git config use.com
-          git add streak
+          git add streak.svg
           git diff --sta"Update streak"
           git push
