@@ -2,26 +2,25 @@ name: Generate Streak Stats
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # 每天跑一次
-  workflow_dispatch:        # 允许手动触发
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate streak SVG
-        uses: DenverCoder1/github-readme-streak-stats@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USER: yelubin377-jpg
-          THEME: tokyonight
-          HIDE_BORDER: true
-          OUTPUT_PATH: streak.svg
+      - uses: actions/checkout@v4
 
-      - name: Commit streak.svg
+      - name: Download streak SVG
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add streak.svg
-          git diff --staged --quiet || git commit -m "Update streak stats"
+          curl -s -o str
+            "https://strelubin377-jpg&theme=tokyo
+night&hide_border=true"
+
+      - name: Commit and
+        run: |
+          git config use
+          git config use.com
+          git add streak
+          git diff --sta"Update streak"
           git push
